@@ -1,1 +1,1 @@
-# project_calc
+# Currency Converter App
