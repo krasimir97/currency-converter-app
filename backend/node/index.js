@@ -54,8 +54,6 @@ app.get('/api/exchange_rates', (req, res) => {
   });
 });
 
-
-// Start the server
 const port = 5001;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
