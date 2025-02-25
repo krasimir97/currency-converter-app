@@ -1,0 +1,131 @@
+/**************************
+******* Navigation *******
+************************/
+/******* Mobile navigation *******/
+@media screen and (max-width: 768px){
+	.nav_wrapper{
+		top:0;
+		padding:0;
+		width:100%;
+		z-index: 10;
+		overflow-y: auto;
+		background:$light;
+		transition: left 0.6s ease-in-out;
+		@include position(fixed, null null 0 -100%);
+	}
+	.main_navi{
+		li{
+			display: block;
+			border-bottom: 1px solid rgba($gray, .2);
+			&:last-child{
+				border-bottom: none;
+			}
+			a{
+				color:$gray;
+				display: block;
+				padding:12px 10px;
+				transition: color 0.3s, background 0.3s ease-in-out;
+			}
+			&:hover, &:focus, &.active {
+				>a{
+					color:$light;
+					background-color:$secondary;;
+				}
+			}
+		}
+	}
+	@include breakpoint(tiny) {
+		.nav_wrapper{
+			max-width:380px;
+		}
+	}
+}
+
+/******* Desktop navigation *******/
+@include breakpoint(medium) {
+	.main_navi{
+		display: flex;
+		justify-content:space-between;
+		li{
+			display: block;
+			a{
+				color:$light;
+				display: block;
+				font-size: 16px;
+				overflow: hidden;
+				position: relative;
+				text-transform: uppercase;
+				@include breakpoint(giant) {
+					font-size: 18px;
+				}
+			}
+			&:hover, &:focus, &.active {
+				a{
+					color:$secondary;
+				}
+			}
+			// Hide footer links
+			&.add_links{
+				display: none;
+			}
+		}
+	}
+}
+
+/**********************************
+******* Mobile navi toggle *******
+********************************/
+label[for="toggle_nav"] {
+	cursor:pointer;
+	&:before {
+		color:$light;
+		display: block;
+		font-size: 27px;
+		font-family: $icons;
+	}
+	@include breakpoint(medium) {
+		display: none;
+	}
+	&.open{
+		@include position(absolute, 10px 10px null null);
+		&:before{
+			padding:7px 10px;
+			content:$open-nav;
+			background-color:$secondary;
+		}
+		&:after {
+			top:0;
+			z-index:1;
+			content:'';
+			opacity: 0;
+			width: 100%;
+			pointer-events:none;
+			background:rgba(#000,0.8);
+			transition: opacity 0.6s ease-in-out;
+			@include position(fixed, null null 0 0);
+		}
+	}
+	&.close{
+		float: right;
+		&:before{
+			content:$close-nav;
+			padding:7px 10px 6px;
+			background-color:$secondary;
+		}
+	}
+}
+#toggle_nav {
+	display: none;
+	&:checked {
+		~ * label[for="toggle_nav"] {
+			&:after {
+				opacity: 1;
+				pointer-events:auto;
+			}
+		}
+		~ * .nav_wrapper,
+		~ .nav_wrapper {
+			left:0;
+		}
+	}
+}

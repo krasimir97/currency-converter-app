@@ -1,0 +1,13 @@
+// Header
+header {
+    background-color: $gray;
+    padding: 10px 0;
+    .header_logo {
+        display: block;
+        max-width: 376px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

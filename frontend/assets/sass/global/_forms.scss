@@ -1,0 +1,79 @@
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+    width: 100%;
+    color: $main;
+    resize: none;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    padding:7px 14px;
+    border-radius:5px;
+	background: $light;
+    line-height: 1.3em;
+    position: relative;
+    font-family: $main-font;
+    border:1px solid $gray;
+    transition: background .3s, border .3s ease-in-out;
+    &:focus {
+        border-color: $secondary;
+    }
+    &:disabled{
+        background-color: $gray;
+    }
+}
+textarea{
+    height: auto;
+    margin-bottom: 10px;
+}
+.checkbox_input_wrap{
+    position: relative;
+    padding-left: 20px;
+    input{
+        @include position(absolute, 0 null null 0);
+    }
+}
+input[type="text"]{
+    &.currency_number{
+        padding: 0 20px;
+        color: $light;
+        border: none;
+        font-weight: 300;
+        font-size: 25px;
+        border-radius: unset;
+        background: transparent;
+        margin-bottom: 4px;
+        border-bottom: 1px solid #a88598;
+        @include desktop {
+            font-size: 28px;
+            @include breakpoint(giant) {
+                font-size: 32px;
+            }
+        }
+        &:focus{
+            outline: unset;
+            border: none;
+            border-bottom: 1px solid $light;
+        }
+    }
+    &::placeholder{
+        color: #a88598;
+        font-size: 17px;
+        @include mobile {
+            @include breakpoint(small) {
+                font-size: 19px;
+            }
+        }
+        @include desktop {
+            font-size: 19px;
+            @include breakpoint(giant) {
+                font-size: 21px;
+            }
+        }
+    }
+}
+
+  

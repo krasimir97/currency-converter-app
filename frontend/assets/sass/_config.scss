@@ -1,0 +1,63 @@
+// Grid configuration
+///////////////////////////////
+
+// Image path
+$image-url: "../images/" !default;
+
+// Fonts
+$main-font: 'Montserrat', sans-serif;
+$icons: "Font Awesome 5";
+$custom-icons: "Custom Icons";
+
+// Base font-size
+$base-fz: 16px;
+
+// Colors
+$main: #fff;
+$text: #05233d;
+$secondary: #259795;
+$secondary-hover: #0A6D6B;
+$accent: #ed4f64;
+$accent_light: #f0808e;
+$yellow: #f4b617;
+$beige: #eee7db;
+
+$blue: #017baa;
+
+$light: #e3d8de;
+$gray: #626366;
+$darker-gray: #898989;
+$light-gray: #aeaeae;
+$dark: #191919;
+$black: #010001;
+$alert: #EA4F64;
+
+$navi-highlight: #313131;
+
+$border: #E6E6E7;
+
+// Grid base options
+$row-width: 1435px;
+$outter-row-width:1715px;
+$col-gap-mobile:10px;
+$col-gap: 10px;
+
+
+// Mobile navigation icon
+$open-nav: "\f0c9";
+$close-nav: "\f00d";
+
+
+// Responsive breakpoints
+$mobile-breakpoints: (
+  "tiny": 480px,
+  "small": 640px,
+);
+$desktop-breakpoints: (
+  "medium": 768px,
+  "large": 992px,
+  "giant": 1200px,
+  'layout': 1540px
+);
+// Number of columns
+$column-count: 12;

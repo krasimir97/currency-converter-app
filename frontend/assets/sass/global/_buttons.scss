@@ -1,0 +1,43 @@
+/***** Buttons and links *****/
+ 
+ 
+input[type="submit"]{
+	width:40px;
+	height: 40px;
+	display: flex;
+	color:$light;
+	display: block;
+	font-size: 16px;
+	border-radius: 100%;
+	cursor: pointer;
+	line-height: 1em;
+	padding: 10px;
+	text-align: center;
+	margin-bottom:16px;
+	border:1px solid $secondary;
+	background-color: $secondary;
+	transition: color .3s, border .3s, background .3s  ease-in-out;
+	&:hover {
+		color:$secondary;
+		border-color: $light;
+		background-color: $light;
+	}
+	&.btn_light{
+		color:$secondary;
+		border-color: $light;
+		background-color:$light;
+		&:hover {
+			color:$light;
+			border-color: $secondary;
+			background-color:$secondary;
+		}
+	}
+	@include breakpoint(tiny) {
+		width:auto;
+		display: inline-block;		
+		&.wide{
+			width:100%;
+			display: block;
+		}
+	}	
+}

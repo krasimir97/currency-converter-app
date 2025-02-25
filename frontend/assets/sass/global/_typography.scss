@@ -1,0 +1,63 @@
+/***** Headlines *****/
+h1, h2, h3, h4, h5, h6{
+	display: block;
+	text-rendering: optimizeLegibility;
+}
+h1{
+	font-size: 23px;
+	color: $light;
+	text-align: center;
+	font-weight: 300;
+	display: block;
+	margin-bottom: 15px;
+	@include mobile {
+		@include breakpoint(small) {
+			font-size: 26px;
+		}
+	}
+	@include desktop {
+			font-size: 28px;
+		@include breakpoint(giant) {
+			font-size: 34px;
+		}
+	}
+}
+h2{
+	font-size: 28px;
+}
+h3{
+	font-size: 24px;
+}
+h4{
+	font-size: 20px;
+}
+h5{
+	font-size: 18px;
+}
+h6{
+	font-size: 16px;
+}
+
+
+strong{
+	font-weight: 700;
+}
+em{
+	font-style: italic;
+}
+
+// Paragraphs
+p {
+	line-height: 1.3em;
+	margin-bottom:1em;
+}
+
+// Links
+a {
+	color: $secondary;
+	text-decoration: none;
+	transition: color .3s, background .3s ease-in-out;
+	&:hover {
+		color:$main;
+	}
+}

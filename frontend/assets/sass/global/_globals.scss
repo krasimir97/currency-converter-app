@@ -1,0 +1,70 @@
+// Global styles
+//////////////////////////
+* {
+	margin: 0;
+	padding: 0;
+	&, &:before, &:after {
+		box-sizing: inherit;
+	}
+}
+
+// Selection
+::selection {
+	color:$light;
+	background-color: $dark;
+}
+::-moz-selection {
+	color:$light;
+	background-color: $dark;
+}
+
+html {
+	color: $main;
+	hyphens: manual;
+	background: $light;
+	text-size-adjust: none;
+	box-sizing: border-box;
+	font-family: $main-font;
+}
+body {
+	color: $main;
+	background: $light;
+	font-size: $base-fz;
+	font-family: $main-font;
+	&.navi_open{
+		overflow:hidden;
+	}
+}
+
+// Global classes
+//////////////////////////////
+.clearfix {
+	zoom:1;
+	&:after {
+	    content: "";
+	    display: table;
+	    clear: both;
+    }
+}
+.crossed{
+	text-decoration: line-through;
+}
+.underline{
+	text-decoration: underline;
+}
+
+
+// Images
+figure{
+	display: inline-block;
+	img{
+		width:100%;
+		margin:0 auto;
+		display: block;
+	}
+}
+a{
+	img{
+		max-width:100%;
+	}
+}

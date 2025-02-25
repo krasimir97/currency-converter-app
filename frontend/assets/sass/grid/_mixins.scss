@@ -1,0 +1,146 @@
+// Mixins
+///////////////////////////////
+
+// 1. Grid mixin
+// 2. Position shortcut helper
+// 3. Fontface
+// 4. Background image
+// 5. CSS responsive file separator
+// 6. RTL
+// 7. Box
+///////////////////////////////
+
+// 1. Grid mixin
+$breakpoints: map-merge($mobile-breakpoints, $desktop-breakpoints);
+@mixin breakpoint($breakpoint) {
+	// If the key exists in the map
+	@if map-has-key($breakpoints, $breakpoint) {
+		// Prints a media query based on the value
+		@media (min-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	// If the key doesn't exist in the map
+	@else {
+		@warn "There is no breakpoint - `#{$breakpoint}`. "
+					+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}
+@mixin breakpoint_reverse($breakpoint) {
+	// If the key exists in the map
+	@if map-has-key($breakpoints, $breakpoint) {
+		// Prints a media query based on the value
+		@media (max-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	// If the key doesn't exist in the map
+	@else {
+		@warn "There is no breakpoint - `#{$breakpoint}`. "
+					+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}
+
+
+
+// 2. Position shortcut helper
+@function is-length($value) {
+	@return type-of($value) != "null" and
+		(
+			str-slice($value + "", 1, 4) == "calc" or
+				index(auto inherit initial 0, $value) or
+				(type-of($value) == "number" and not(unitless($value)))
+		);
+}
+@function unpack($shorthand, $length: 4) {
+	@for $i from 1 through $length {
+		@if (length($shorthand) < $i) {
+			$shorthand: append($shorthand, nth($shorthand, floor($i / 2)));
+		}
+	}
+	@return $shorthand;
+}
+@mixin position($position: relative, $coordinates: null null null null) {
+	@if type-of($position) == list {
+		$coordinates: $position;
+		$position: relative;
+	}
+
+	$coordinates: unpack($coordinates);
+
+	$offsets: (
+		top: nth($coordinates, 1),
+		right: nth($coordinates, 2),
+		bottom: nth($coordinates, 3),
+		left: nth($coordinates, 4),
+	);
+
+	position: $position;
+
+	@each $offset, $value in $offsets {
+		@if is-length($value) {
+			#{$offset}: $value;
+		}
+	}
+}
+
+
+
+// 3. Fontface
+@mixin font_face($name, $path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: quote($name);
+		src: url($path + ".eot");
+		src: url($path + ".eot?#iefix") format("embedded-opentype"),
+			url($path + ".woff") format("woff"),
+			url($path + ".ttf") format("truetype"),
+			url($path + ".svg##{$name}") format("svg");
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+
+
+// 4. Background image
+@function image-url($url) {
+	@return url("#{$image-url}#{$url}");
+}
+
+
+
+// 5. CSS responsive file separator
+@mixin mobile {
+	@if $device==mobile {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@if $device==desktop {
+		@content;
+	}
+}
+
+
+
+// 6. RTL
+@mixin rtl {
+	html[dir="rtl"] & {
+		@content;
+	}
+}
+
+@mixin ltr {
+	html:not([dir="rtl"]) & {
+		@content;
+	}
+}
+
+
+
+// 7. Box
+@mixin box($width, $height: $width) {
+	width: $width;
+	height: $height;
+}

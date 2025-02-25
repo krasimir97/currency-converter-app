@@ -1,0 +1,146 @@
+/***** Popup *****/
+.popup_wrap{
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	visibility: hidden;
+	pointer-events: none;
+	background-color: rgba(#000, .8);
+	@include position(fixed, 0 null null 0);
+	transition: opacity .3s, visibility .3s ease-in-out;
+	&.active_pop {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+	&.save_user {
+		.popup_cont{
+			width: 640px;
+		}
+	}
+	&.contact_me {
+		.popup_cont{
+			width: 440px;
+		}
+	}
+	.popup_cont{
+		width:320px;
+		max-width:90%;
+		max-height: 90%;
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: $light;
+		transform:translate(-50%, -50%);
+		@include position(absolute, 50% null null 50%);
+		.close_x {
+			color: $main;
+			width: 26px;
+			height: 26px;
+			padding: 3px;
+			display: block;
+			font-size: 25px;
+			cursor: pointer;
+			text-align: center;
+			transform: translateY(-50%);
+			transition: background 0.3s, color .3s ease-in-out;
+			@include position(absolute, 50% 20px null null);
+			&:before{
+				content: '\f00d';
+				font-style: normal;
+				font-weight: normal;
+				font-family: $icons;
+			}
+			&:hover{
+				background-color: $secondary;
+			}
+		}
+		.popup_header {
+			display: block;
+			font-size: 30px;
+			font-weight: 300;
+			padding: 20px 15px;
+			position: relative;
+			background-color: #eeeeee;
+			span{
+				display: block;
+			}
+		}
+		.popup_footer{
+			width: 100%;
+			display: flex;
+			padding: 10px 15px;
+			align-items: center;
+			justify-content: flex-end;
+			border-top: 1px solid $gray;
+			button,
+			.btn{
+				padding: 8px 10px;
+				@extend .wide;
+				max-width: 100px;
+				margin-bottom: 0;
+				margin: 0 5px;
+			}
+		}
+		.popup_ct{
+			padding: 20px;
+			label{
+				font-size: 13px;
+				display: block;
+				margin-bottom: 5px;
+			}
+			select,
+			input{
+				margin-bottom: 10px;
+			}
+			.save_user_box{
+				text-align: center;
+				.acc_type{
+					display: block;
+					font-size: 13px;
+					color:#cecece;
+					font-weight: 300;
+					margin-bottom: 10px;
+					text-align: left;
+				}
+				.user_circle_img{
+					margin-bottom: 20px;
+				}
+				.name{
+					display: block;
+					margin-bottom: 10px;
+				}
+				.ratings{
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+// .popup_cont{
+// 	position: relative;
+// 	h4{
+// 		margin-bottom: 16px;
+// 		padding-bottom: 6px;
+// 		border-bottom: 1px solid $secondary;
+// 	}
+// 	.scroll_content{
+// 		overflow:auto;
+// 		max-height:100%;
+// 		padding:20px 10px;
+// 		border-radius:5px;
+// 		background-color: $light;
+// 		@include breakpoint(tiny) {
+// 			padding:20px;
+// 		}
+// 	}
+// 	form{
+// 		margin-bottom:0;
+// 	}
+// 	small{
+// 		display: block;
+// 		font-size: 14px;
+// 		margin-bottom:30px;
+// 	}
+// }

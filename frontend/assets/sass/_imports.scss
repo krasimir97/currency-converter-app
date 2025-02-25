@@ -1,0 +1,26 @@
+// Config file
+@import 'config';
+
+// System files
+@import 'grid/reset';
+@import 'grid/fonts';
+@import 'grid/mixins';
+@import 'grid/responsive';
+
+// Plugins
+// @import 'plugins/slider'; // Slick slider
+ @import 'plugins/nice-select'; // Slick slider
+
+// Global styles
+@import 'global/globals';
+
+@import 'global/typography';
+@import 'global/buttons';
+@import 'global/forms';
+@import 'global/navigation';
+@import 'global/popups';
+
+// Page design
+@import 'design/header';
+@import 'design/footer';
+@import 'design/page';
